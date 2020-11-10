@@ -27,4 +27,9 @@ class Authors extends Model
     public $timestamps = false;
     //mass-assignments - post-Werte auf einmal erfassen:
     protected $fillable = ['firstname', 'lastname'];
+
+    public function movies() {
+        return $this->hasMany(Movies::class, 'author_id', 'id');
+    }
+    //hasMany geht auch umgekehrt, via belongsTo (würde man z.B. den Movies den jeweiligen Autor zuordnen)
 }
