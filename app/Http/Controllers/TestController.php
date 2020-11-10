@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class TestController extends Controller
 {
-    public function greetings($user = null) {
+    public function greetings($user = "Der, dessen Name nicht genannt wurde...") {
         return view('greeting', ['user' => $user]);
     }
 }

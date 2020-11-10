@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.default_bernd')
 
 @section('title', 'Page Title')
 
