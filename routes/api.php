@@ -2,7 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Api\ApiTodosController;
+use App\Http\Controllers\Api\ApiAuthorsController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,7 +14,9 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+// routes for Todos REST-Api
+Route::apiResource('todos', ApiTodosController::class);
+Route::apiResource('authors', ApiAuthorsController::class);

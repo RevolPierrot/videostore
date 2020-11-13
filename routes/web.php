@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TodosController;
 use App\Http\Controllers\AuthorsController;
+use App\Http\Controllers\MoviesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -92,6 +93,10 @@ Route::get('/todos/{id}', [TodosController::class, 'show'])->name('todos.show');
 Route::get('/authors', [AuthorsController::class, 'index'])->name('authors');
 Route::get('/authors/{id}', [AuthorsController::class, 'show'])->name('authors.show');
 
+//Projectday3
+
+Route::get('/movies', [MoviesController::class, 'index'])->name('movies');
+Route::get('/movies/{id}', [MoviesController::class, 'show'])->name('movies.show');
 
 
 //Todos updaten/verändern/löschen
@@ -128,3 +133,21 @@ $routeFunction = function($route) {
 
 Route::group($routeParams, $routeFunction);
 //alternative Schreibweise (mit den Params direkt in der Gruppe), siehe Dozentenordner
+
+//Projectday3
+$routeParams = [
+    'middleware' => 'auth',
+    'prefix' => 'movies',
+];
+
+$routeFunction = function($route) {
+    $route->get('/create', [MoviesController::class, 'create'])->name('movies.create');
+    $route->get('/edit/{id}', [MoviesController::class, 'edit'])->name('movies.edit');
+    $route->post('/store', [MoviesController::Class, 'store'])->name('movies.store');
+    $route->post('/update/{id}', [MoviesController::Class, 'update'])->name('movies.update');
+    $route->get('/destroy/{id}', [MoviesController::Class, 'destroy'])->name('movies.destroy');
+};
+
+
+Route::group($routeParams, $routeFunction);
+

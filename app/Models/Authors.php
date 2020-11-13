@@ -31,5 +31,5 @@ class Authors extends Model
     public function movies() {
         return $this->hasMany(Movies::class, 'author_id', 'id');
     }
-    //hasMany geht auch umgekehrt, via belongsTo (würde man z.B. den Movies den jeweiligen Autor zuordnen)
+    //hasMany geht auch umgekehrt, via belongsTo (würde man z.B. den movies den jeweiligen Autor zuordnen)
 }
